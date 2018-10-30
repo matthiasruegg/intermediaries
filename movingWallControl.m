@@ -18,7 +18,7 @@ if (exist ('PIdevice', 'var'))
 end
 
 if (~(boolPIdeviceConnected))
-    controllerSerialNumber = '117066693';                                                        % Or look at the label of the case of your controller
+    controllerSerialNumber = '117066693';
     PIdevice = Controller.ConnectUSB(controllerSerialNumber);
 end
 
@@ -33,7 +33,6 @@ PIdevice.qCST('1');
 
 % Show for all axes: which stage is connected to which axis
 for idx = 1 : length(availableAxes)
-    % qCST gets the name of the 
     stageName = PIdevice.qCST(availableAxes{idx});
     disp (['Axis ', availableAxes{idx}, ': ', stageName ]);
 end
@@ -85,7 +84,7 @@ pause(3600*24*6)
 % go and return loop
 for N = 1:n
     
-    k = 0; % incrementation
+    k = 0;
     while Position <= maximumPosition - movStep
         PIdevice.MVR(axis, movStep)
     
